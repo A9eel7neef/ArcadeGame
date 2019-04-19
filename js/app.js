@@ -1,4 +1,3 @@
-
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     //object variables
@@ -31,9 +30,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// This class requires an update(), render() and
-// a handleInput() method.
-// Enemies our player must avoid
+// This is Player class................................................................
 var Player = function() {
     //object variables
     this.x = 200;
@@ -57,9 +54,9 @@ Player.prototype.resetLocation = function(dt) {
 Player.prototype.handleInput = function(e) {
     if (!isWinning) {
         switch (true) {
-            case e == "up" && (this.y >= 0):              
+            case e == "up" && (this.y >= 0):
                 this.y = this.y - 40;
-				this.checkWining();
+                this.checkWining();
                 break;
             case e == "down" && (this.y <= screenHeight - 225):
 
@@ -83,32 +80,12 @@ Player.prototype.handleInput = function(e) {
 //Keep checking if the player arrived to the water
 Player.prototype.checkWining = function() {
 
-        if (this.y <= 15) {
-            this.resetLocation(); //Reset player posistin
-            winner();//Show the Winning dialog
-            isWinning = true; 
-
-        }
-
-
+    if (this.y <= 15) {
+        this.resetLocation(); //Reset player posistin
+        winner(); //Show the Winning dialog
+        isWinning = true;
     }
-
-    /**
-	Create the content of Winning Dialog and display it to the player
-	*/
-    function winner() {
-        let btn = document.createElement("BUTTON");
-        btn.innerText = "Play Again!";
-        btn.classList = 'button';
-        btn.addEventListener("click", function() {
-		dialog.close();
-		isWinning = false;
-    });
-        dialog.setAttribute("style", "height:15%;");
-        dialog.innerHTML = '<h2> Winner winner chicken dinner! </h2>';
-        dialog.appendChild(btn);
-        dialog.show();
-    }
+}
 
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
@@ -137,3 +114,18 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//Create the content of Winning Dialog and display it to the player	
+function winner() {
+    let btn = document.createElement("BUTTON");
+    btn.innerText = "Play Again!";
+    btn.classList = 'button';
+    btn.addEventListener("click", function() {
+        dialog.close();
+        isWinning = false;
+    });
+    dialog.setAttribute("style", "height:15%;");
+    dialog.innerHTML = '<h2> Winner winner chicken dinner! </h2>';
+    dialog.appendChild(btn);
+    dialog.show();
+}

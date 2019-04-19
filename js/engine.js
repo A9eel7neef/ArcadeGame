@@ -30,8 +30,8 @@ var Engine = (function(global) {
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
-	screenWidth = document.getElementById("myCanvas").width;
-	screenHeight = document.getElementById("myCanvas").height;
+    screenWidth = document.getElementById("myCanvas").width;
+    screenHeight = document.getElementById("myCanvas").height;
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -96,7 +96,6 @@ var Engine = (function(global) {
                 player.x + player.width > enemy.x &&
                 player.y < enemy.y + enemy.height &&
                 player.y + player.height > enemy.y) {
-                console.log("ouch!");
                 player.resetLocation();
             }
 
@@ -104,7 +103,7 @@ var Engine = (function(global) {
         });
 
     }
-	
+
 
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -185,7 +184,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        
+
 
     }
 
