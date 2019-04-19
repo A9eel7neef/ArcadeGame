@@ -1,0 +1,10 @@
+﻿body {
+    text-align: center;
+	background-color: grey;
+}
+dialog {
+	width:40%;
+	height:30%;
+  	z-index:1;
+ 	text-align: center;
+}
